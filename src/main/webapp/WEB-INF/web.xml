@@ -8,4 +8,13 @@
 	 <servlet-name>NewPatinetRegister</servlet-name>
 	 <url-pattern>/reg</url-pattern>
  </servlet-mapping>
+ 
+  <servlet>
+	 <servlet-name>ViewPatinetDetails</servlet-name>
+	 <servlet-class>com.java.ViewPatientDeatils</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	 <servlet-name>ViewPatinetDetails</servlet-name>
+	 <url-pattern>/viewPatinetDetails</url-pattern>
+ </servlet-mapping>
 </web-app>

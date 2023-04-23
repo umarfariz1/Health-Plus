@@ -65,10 +65,7 @@ public class NewPatientReg extends HttpServlet {
 			e.printStackTrace();
 		}
 		out.println("<table style='margin:auto; margin-top:100px; align-text:center;'>");
-
-		out.println("<tr><td>Name:</td>");
-		out.println("<td>" + patientName + "</td>");
-		out.println("</tr>");
+		out.println("<td><a href ='UserInterface.html'><button style='btn'>Home</button></a></td>");
 		out.println("</table>");
 
 		out.println("</body>");
