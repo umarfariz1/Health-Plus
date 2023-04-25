@@ -7,12 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ViewPatientDeatils extends HttpServlet {
+public class UpdatePatinetDetailsCheck extends HttpServlet {
 	String PatientName;
 	String PatientMobileNo;
 	String PatientEmailId;
@@ -21,27 +20,16 @@ public class ViewPatientDeatils extends HttpServlet {
 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		PrintWriter out = res.getWriter();
-		String mobileNumber = req.getParameter("PatientMobileNumber");
-		req.setAttribute("PatientMobileNo", mobileNumber);
+		String patinetMobileNo = req.getParameter("mobileNumber");
 
-		boolean checkMobileNumber = false; 
-		NewPatientReg mobileNumberCheck = new NewPatientReg();
 		// Initializing boot strap
-					out.println("<link rel='stylesheet' href='css/bootstrap.css'> </link> ");
+		out.println("<link rel='stylesheet' href='css/bootstrap.css'> </link> ");
 
-					// Html code for color in webpage
-					out.println("<body style='Background-color:green; color:white; margin'>");
-					out.println("<div style='width:1000px; margin:auto; margin-top:150px' >");
-					out.println("<h2 style='text-align:center; margin-bottom:50px;'>Patinet Details</h2>");
-		try {
-		checkMobileNumber =	mobileNumberCheck.CheckMobileNumber(mobileNumber);
-		
-			
-		
-		
-		System.out.println(checkMobileNumber);
-		if(checkMobileNumber) {
-		
+		// Html code for color in webpage
+		out.println("<body style='Background-color:green; color:white; margin'>");
+		out.println("<div style='width:1200px; margin:auto; margin-top:150px' >");
+		out.println("<h2 style='text-align:center; margin-bottom:50px;'>Patinet Details</h2>");
+
 		// Query for viewing Patient Details from Data Base where mobile number is given
 		// from the user
 		String query2 = "select * from patientdetails where patient_mobile_no=?  ";
@@ -60,13 +48,11 @@ public class ViewPatientDeatils extends HttpServlet {
 
 			pre = con.prepareStatement(query2);
 
-			pre.setString(1, mobileNumber);
+			pre.setString(1, patinetMobileNo);
 
 			ResultSet rst;
 
 			rst = pre.executeQuery();
-
-			
 
 			// collecting data from the data base and assigning into variable
 			while (rst.next()) {
@@ -79,42 +65,34 @@ public class ViewPatientDeatils extends HttpServlet {
 				PatientGender = rst.getString(5);
 
 				// printing the data in the web page in table format by using html
+				out.println("<form action='UpdatePatinetDetailsinDb?mobileNumber="+patinetMobileNo+"' method='post'>");
 				out.println("<table class='table table-hover;'style='text-align:center;' >");
+				
+				System.out.println("Mobile before:"+patinetMobileNo);
 				out.println(
 						"<tr style='text-align:center;'><th>Name</th> <th>Mobile Number</th><th>Email ID</th><th>DOB</th><td>Gender</th></tr>");
 				out.println("<tr><td>" + PatientName + "</td><td>" + PatientMobileNo + "</td><td>" + PatientEmailId
 						+ "</td><td>" + PatientDob + "</td><td>" + PatientGender + "</td></tr>");
+				out.println("<tr><td><input type='text' name='PatientName1' value=" + PatientName
+						+ "  ></td><td><input type='number' name='PatientMobileNo' value=" + PatientMobileNo
+						+ "></td><td><input type='email' name='PatientEmailId' value=" + PatientEmailId + ">"
+						+ "</td><td><input type='date' name='PatientDob' value=" + PatientDob
+						+ "></td><td><input type='text' name='PatientGender' value=" + PatientGender + "></td></tr>");
 
-				out.println("<tr><td><a href='UpdatePatinetDetails?mobileNumber="+PatientMobileNo+"'><button class='btn'>Edit</button></a></td>");
-
-				out.println("<td><a href='DeletePatientDetails?mobileNumber=" + PatientMobileNo
-						+ "'><button class='btn'>Delete</button></a></td>");
-
-				out.println("<td><a href='UserInterface.html'><button class='btn'>Home</button></a></td></tr>");
+				out.println("<tr><td><button type='submit' class='btn'>Update</button></td>");
+				out.println("<td><button type='reset' class='btn'>Reset</button></td>");
+			
+				out.println("<td><a href='UserInterface.html'><button type=''  class='btn'>Home</button></a></td></tr>");
+				
 				out.println("</div>");
 				out.println("</table>");
+				out.println("</form>");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.printStackTrace();
 		}
-		
-		}else {
-			res.setContentType("text/html");
-			
-			out.println("<h2 style='text-align:center; margin-bottom:50px; color:red;' >Patinet Details not found!!!<br>Please Try agin with valid details</h2>");
-			out.println("<div style='width:100px; margin:auto' >");
-			out.println("<a href='ViewPatientDetails.html'><button class='btn'>Back</button></a>");
-			out.println("</div>");
-		}
-		
-		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
-		}
-		out.println("</div>");
-	
-		
-		out.println("</body>");
 	}
+
 }

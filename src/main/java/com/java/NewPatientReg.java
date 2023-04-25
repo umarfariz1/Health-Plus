@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -88,16 +90,27 @@ public class NewPatientReg extends HttpServlet {
 
 	public int insertData(String name, String mobileNo, String email, String dob, String gender)
 			throws ClassNotFoundException, SQLException {
-		String query = "insert into patientdetails (patient_name, patient_mobile_no, patient_email, patient_dob , patient_gender)"
-				+ "	VALUES (?, ?, ?, ?, ?);";
+		String query = "insert into patientdetails (patient_name, patient_mobile_no, patient_email, patient_dob , patient_gender,patient_age,prefix)"
+				+ "	VALUES (?, ?, ?, ?, ?,?,?);";
 		NewPatientReg object = new NewPatientReg();
 		Connection con = object.DbConnection();
+		String age = String.valueOf(object.AgeCalculator(dob));
+		String patient_contractions;
+		if(gender.equalsIgnoreCase("male")) {
+			patient_contractions="Mr";
+		}else {
+			patient_contractions="Mrs";
+		}
+		System.out.println("Name: "+patient_contractions+ ""+name+"");
+		System.out.println("Age of Patient "+age+" if born in "+dob);
 		PreparedStatement pst = con.prepareStatement(query);
 		pst.setString(1, name);
 		pst.setString(2, mobileNo);
 		pst.setString(3, email);
 		pst.setString(4, dob);
 		pst.setString(5, gender);
+		pst.setString(6, age);
+		pst.setString(7, patient_contractions);
 
 		int update = pst.executeUpdate();
 
@@ -113,6 +126,18 @@ public class NewPatientReg extends HttpServlet {
 		ResultSet rst = pst.executeQuery();
 		boolean mobileNumberCheck = (rst.next());
 		return mobileNumberCheck;
+
+	}
+
+	public int AgeCalculator(String dob) {
+		LocalDate curDate = LocalDate.now();
+		LocalDate dob1 = LocalDate.parse(dob);
+		if ((dob1 != null) & (curDate != null)) {
+			return Period.between(dob1, curDate).getYears();
+
+		} else {
+			return 0;
+		}
 
 	}
 

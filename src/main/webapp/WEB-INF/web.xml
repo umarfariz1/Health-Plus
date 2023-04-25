@@ -17,4 +17,37 @@
 	 <servlet-name>ViewPatinetDetails</servlet-name>
 	 <url-pattern>/viewPatinetDetails</url-pattern>
  </servlet-mapping>
+ <servlet>
+	 <servlet-name>DeletePatinetDetailsconformation</servlet-name>
+	 <servlet-class>com.java.DeletePatientDetails</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	 <servlet-name>DeletePatinetDetailsconformation</servlet-name>
+	 <url-pattern>/DeletePatientDetails</url-pattern>
+ </servlet-mapping>
+ 
+  <servlet>
+	 <servlet-name>DeletePatinetDetails</servlet-name>
+	 <servlet-class>com.java.DeletePatientDetails2</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	 <servlet-name>DeletePatinetDetails</servlet-name>
+	 <url-pattern>/DeletePatientDetails2</url-pattern>
+ </servlet-mapping>
+   <servlet>
+	 <servlet-name>UpdatePatinetDetails</servlet-name>
+	 <servlet-class>com.java.UpdatePatinetDetailsCheck</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	 <servlet-name>UpdatePatinetDetails</servlet-name>
+	 <url-pattern>/UpdatePatinetDetails</url-pattern>
+ </servlet-mapping>  <servlet>
+	 <servlet-name>UpdatePatinetDetailsinDataBase</servlet-name>
+	 <servlet-class>com.java.UpdatePatientDetails</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	 <servlet-name>UpdatePatinetDetailsinDataBase</servlet-name>
+	 <url-pattern>/UpdatePatinetDetailsinDb</url-pattern>
+ </servlet-mapping>
+ 
 </web-app>
