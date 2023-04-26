@@ -78,7 +78,7 @@ public class NewPatientReg extends HttpServlet {
 		Connection con = null;
 		Class.forName("org.postgresql.Driver");
 		try {
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/HealthPlus", "postgres", "9787136690");
+			con = DriverManager.getConnection("jdbc:postgresql://http://192.168.35.235:5432/HealthPlus", "postgres", "9787136690");
 		} catch (SQLException e) {
 
 			e.printStackTrace();

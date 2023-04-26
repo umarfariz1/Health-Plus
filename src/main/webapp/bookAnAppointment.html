@@ -20,32 +20,32 @@
 
 </head>
 <body class="body">
-	<form action="bookappointmentc
-	screen" class="form">
-		<h2 style="text-align: center;">New Patient Registration</h2>
+	<form action="bookappointmentscreen" class="form">
+		<h2 style="text-align: center;">Book an appointment</h2>
 		<table class="table table-hover">
 
 
-			
+
 			<tr>
 				<td>Mobile Number</td>
 				<td><input type="text" name="patinetMobileNo"></td>
 			</tr>
-			
+
 			<tr>
-				<td>Date</td>
-				<td><input type="date" name="patinetDob"></td>
+				<td>Date of Appointment</td>
+				<td><input type="date" name="dateOfAppointment"></td>
 			</tr>
 			<tr>
 
-				<td><select name="doctor">
-				<option value="albert">Dr. Albert</option>
-				<option value="abdul">Dr. Abdul</option>
-				<option value="franklin">Dr. Franklin</option>
-				<option value="sabeena">Dr. Sabeena</option>
-				
-				</select> </td></tr>
-				<br>
+				<td>Select Doctor<br></td><td> Dr.<select name="doctor">
+						<option value="Albert">Albert</option>
+						<option value="Abdul">Abdul</option>
+						<option value="Franklin">Franklin</option>
+						<option value="Sabeena">Sabeena</option>
+
+				</select></td>
+			</tr>
+
 
 
 
@@ -56,12 +56,13 @@
 
 				</td>
 				</form>
-				
-				<td><button class="btn"><a href="UserInterface.html">Home</a></button></td>
 
-				
+				<td><button class="btn">
+						<a href="UserInterface.html">Home</a>
+					</button></td>
+
+
 			</tr>
 		</table>
-		
 </body>
 </html>

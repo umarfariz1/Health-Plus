@@ -49,5 +49,29 @@
 	 <servlet-name>UpdatePatinetDetailsinDataBase</servlet-name>
 	 <url-pattern>/UpdatePatinetDetailsinDb</url-pattern>
  </servlet-mapping>
+  <servlet>
+	 <servlet-name>BookAppoitment</servlet-name>
+	 <servlet-class>com.java.BookAppointmentScreen</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	 <servlet-name>BookAppoitment</servlet-name>
+	 <url-pattern>/bookappointmentscreen</url-pattern>
+ </servlet-mapping>
+  <servlet>
+	 <servlet-name>ViewHistory</servlet-name>
+	 <servlet-class>com.java.ViewHistory</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	 <servlet-name>ViewHistory</servlet-name>
+	 <url-pattern>/viewHistory</url-pattern>
+ </servlet-mapping>
+  <servlet>
+	 <servlet-name>ViewDoctorDetails</servlet-name>
+	 <servlet-class>com.java.ViewDoctorDetails</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	 <servlet-name>ViewDoctorDetails</servlet-name>
+	 <url-pattern>/viewdoctordetails</url-pattern>
+ </servlet-mapping>
  
 </web-app>

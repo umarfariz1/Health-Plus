@@ -43,7 +43,7 @@ out.println("<div style='margin:auto; width:500px; margin-top:150px;'>");
 			} else {
 				out.println("<h2>Details not deleted!!! Try Again Later</h2>");
 			}
-out.println("<a href=''><button class='btn' style='margin-top:10px;'>Home</button></a>");
+out.println("<a href='UserInterface.html'><button class='btn' style='margin-top:10px;'>Home</button></a>");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
